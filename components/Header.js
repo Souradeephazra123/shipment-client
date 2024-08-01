@@ -1,10 +1,25 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const path = usePathname();
+
+  const [pageText, setPageText] = useState("");
+
+  useEffect(() => {
+    if (path === "/") {
+      setPageText("DashBoardCenter");
+    } else if (path === "/analytics") {
+      setPageText("AnalyticsCenter");
+    }
+  }, []);
+
+  console.log(path);
   return (
     <div className=" flex justify-between border-b-[0.5px] border-[#D9D9D9] ">
-      <p>DashBoardCenter</p>
+      <p>{pageText}</p>
       <div className=" flex gap-2 items-center">
         <div className=" relative">
           <Image

@@ -1,0 +1,49 @@
+[
+  {
+    "geo_location": {
+      "latitude": 28.6338771472365,
+      "longitude": 77.2184063291207
+    },
+
+    "name": "Souradeep",
+    "pincode": "110044",
+    "address": "Block-B Connaught Place, 9, Om Nagar, Block B,New Delhi 110044",
+
+    "category": ["student"]
+  },
+  {
+    "geo_location": {
+      "latitude": 12.9746995990922,
+      "longitude": 77.6069615262958
+    },
+
+    "name": "Souradeep",
+    "pincode": "560001",
+    "address": "Pavilion Mall, 62/63, Church St, Haridevpur, Shanthala Nagar,Ashok Nagar, Bengaluru, Karnataka 560001",
+
+    "category": ["student"]
+  },
+  {
+    "geo_location": {
+      "latitude": 19.0815512972201,
+      "longitude": 72.8940125767167
+    },
+    "name": "Souradeep",
+    "pincode": "400086",
+    "address": "Thakor Industrial Estate, Kurla Kirol Road, Vidyavihar (W),   Mumbai, Maharashtra 400086",
+
+    "category": ["student"]
+  },
+  {
+    "geo_location": {
+      "latitude": 22.57081,
+      "longitude": 88.43086
+    },
+
+    "name": "Souradeep",
+    "pincode": "7000911",
+    "address": "Rashtriya, Atlas Bhavan, 35, Salt Lake Bypass, GN Block, Sector V, Bidhannagar, Kolkata, West Bengal 7000911",
+
+    "category": ["student"]
+  }
+]

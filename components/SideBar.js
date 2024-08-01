@@ -20,7 +20,7 @@ const SideBar = () => {
     "History",
   ];
 
-  const DashboardArrLink = ["/", "/analytics", "/", "/", "/", "/", "/", "/"];
+  const DashboardArrLink = ["/", "/analytics", "/q", "/", "/", "/", "/", "/"];
 
   const DashboardImageArr = [
     "/Dashboard/first.svg",

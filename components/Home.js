@@ -4,6 +4,7 @@ import Header from "./Header";
 import Homecenter from "./Homecenter";
 import PieChart from "./PieChart";
 import Other from "./Other";
+import MapPage from "./MapPage";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <div className=" w-[80%] pr-5">
         <Header />
         <Homecenter/>
+        <MapPage/>
         <PieChart/>
         <Other/>
       </div>

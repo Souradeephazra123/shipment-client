@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TableData from "../data/data.json";
 import RealPie from "./RealPie";
 import { RealPie2 } from "./RealPie";
@@ -44,6 +44,9 @@ const AnalyticsCenter = () => {
     { name: "LATE", value: 1 },
   ];
 
+  const [page, setPage] = useState(10);
+  const pageArr = [10, 20, 30, 40, 50, 100];
+
   const [activeYan, setActiveYan] = useState("Sea");
   const SeaArr = ["Shipments", "Containers"];
   const [active, setActive] = useState("Shipments");
@@ -56,6 +59,7 @@ const AnalyticsCenter = () => {
     type: false,
     date: false,
     period: false,
+    page: false,
   });
 
   const handleTypeIcon = () => {
@@ -75,6 +79,13 @@ const AnalyticsCenter = () => {
     setDropdownActive((prev) => ({
       ...prev,
       date: !prev.date,
+    }));
+  };
+
+  const handleTypePage = () => {
+    setDropdownActive((prev) => ({
+      ...prev,
+      page: !prev.page,
     }));
   };
 
@@ -174,7 +185,7 @@ const AnalyticsCenter = () => {
     datasets: [
       {
         label: "Sea Dataset",
-        data: [452,682-452],
+        data: [452, 682 - 452],
         backgroundColor: ["#7BB896", "#F7A668"],
         borderWidth: 0,
         // hoverOffset: 4,
@@ -187,13 +198,47 @@ const AnalyticsCenter = () => {
     datasets: [
       {
         label: "Sea Dataset",
-        data: [234,682-234],
+        data: [234, 682 - 234],
         backgroundColor: ["#7BB896", "#F7A668"],
         borderWidth: 0,
         // hoverOffset: 4,
       },
     ],
   };
+
+  //pagination
+  const totalPages = 10; // Total number of pages
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const renderPagination = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`px-2 py-1 mx-1 ${
+            currentPage === i ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pages;
+  };
+
+  const [init, setInit] = useState(0);
+  const [end, setEnd] = useState(0);
+
+  useEffect(() => {
+    setInit(page * (currentPage - 1));
+    setEnd(page * currentPage);
+  }, [page, currentPage]);
 
   return (
     <div className=" flex flex-col gap-5">
@@ -467,91 +512,138 @@ const AnalyticsCenter = () => {
         </div>
       </div>
 
-      <div className=" bg-white p-4 rounded-xl xl:rounded-2xl shadow-md table-scroll overflow-x-auto">
-        <table className=" min-w-full divide-y divide-gray-200 ">
-          <thead className=" bg-gray-200">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                HBL
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                MBL#
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                PO/REF#
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Receipt
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Loading
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Discharge
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Delivery
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Booking
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Booking
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Consignee
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Carrier
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Type
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {TableData.map((row, index) => (
-              <tr key={index}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.hbl}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.mbl}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.poRef}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.receipt}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.loading}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.discharge}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.delivery}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.booking}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.shipping}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.consignee}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.carrier}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {row.type}
-                </td>
+      <div className=" bg-white p-4 rounded-xl xl:rounded-2xl shadow-md ">
+        <div className="table-scroll overflow-x-auto">
+          <table className=" min-w-full divide-y divide-gray-200 ">
+            <thead className=" bg-gray-200">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  HBL
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  MBL#
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  PO/REF#
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Receipt
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Loading
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Discharge
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Delivery
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Booking
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Booking
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Consignee
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Carrier
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+                  Type
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {TableData.slice(init,end).map((row, index) => (
+                <tr key={index}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.hbl}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.mbl}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.poRef}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.receipt}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.loading}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.discharge}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.delivery}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.booking}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.shipping}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.consignee}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.carrier}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {row.type}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* page */}
+        <div className=" relative">
+          <div className=" border-[1px] border-[#D9D9D9] rounded-full py-2 px-3 relative w-20">
+            <span>{page}</span>
+            {!dropdownActive.page && (
+              <Image
+                src={"/dropdown-arrow.svg"}
+                width={48}
+                height={48}
+                alt="avatar"
+                onClick={handleTypePage}
+                className="w-4 h-6 absolute top-1/2 transform -translate-y-1/2 right-5"
+              />
+            )}
+            {dropdownActive.page && (
+              <Image
+                src={"/dropdown-arrow.svg"}
+                width={48}
+                height={48}
+                alt="avatar"
+                onClick={handleTypePage}
+                className="w-4 h-6 absolute top-1/2 transform -translate-y-1/2 right-5 rotate-180"
+              />
+            )}
+          </div>
+
+          {dropdownActive.page && (
+            <ul className=" border-[1px] border-gray-400 rounded p-2 absolute top-10 left-0 w-20 bg-gray-200 z-10">
+              {pageArr.map((item, idx) => (
+                <li
+                  key={idx}
+                  className={` hover:bg-gray-400  cursor-pointer`}
+                  onClick={() => {
+                    setPage(item);
+                    handleTypePage();
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="flex justify-center pt-4">{renderPagination()}</div>
       </div>
     </div>
   );

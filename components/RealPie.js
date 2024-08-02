@@ -6,21 +6,21 @@ import { Pie } from "react-chartjs-2";
 import Image from "next/image";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const RealPie2 = () => {
+export const RealPie2 = ({data}) => {
   const Mile = ["ON TIME", "LATE"];
 
-  const data = {
-    labels: Mile,
-    datasets: [
-      {
-        label: "Sea Dataset",
-        data: [681, 1],
-        backgroundColor: ["#7BB896", "#F7A668"],
-        borderWidth: 0,
-        // hoverOffset: 4,
-      },
-    ],
-  };
+  // const data = {
+  //   labels: Mile,
+  //   datasets: [
+  //     {
+  //       label: "Sea Dataset",
+  //       data: [681, 1],
+  //       backgroundColor: ["#7BB896", "#F7A668"],
+  //       borderWidth: 0,
+  //       // hoverOffset: 4,
+  //     },
+  //   ],
+  // };
 
   const options = {
     plugins: {
@@ -72,7 +72,7 @@ export const RealPie2 = () => {
   );
 };
 
-const RealPie = () => {
+const RealPie = ({data}) => {
   const MileStoneArr = [
     "BOOKED",
     "DISCHARGED",
@@ -80,24 +80,24 @@ const RealPie = () => {
     "DELIVERED",
     "RETURNED",
   ];
-  const data = {
-    labels: MileStoneArr,
-    datasets: [
-      {
-        label: "Sea Dataset",
-        data: [463 - 19, 463 - 29, 463 - 22, 463 - 393, 463 - 149],
-        backgroundColor: [
-          "#6B120A",
-          "#EB5D50",
-          "#F7A668",
-          "#7BB896",
-          "#1073E6",
-        ],
-        borderWidth: 0,
-        // hoverOffset: 4,
-      },
-    ],
-  };
+  // const data = {
+  //   labels: MileStoneArr,
+  //   datasets: [
+  //     {
+  //       label: "Sea Dataset",
+  //       data: [463 - 19, 463 - 29, 463 - 22, 463 - 393, 463 - 149],
+  //       backgroundColor: [
+  //         "#6B120A",
+  //         "#EB5D50",
+  //         "#F7A668",
+  //         "#7BB896",
+  //         "#1073E6",
+  //       ],
+  //       borderWidth: 0,
+  //       // hoverOffset: 4,
+  //     },
+  //   ],
+  // };
 
   const options = {
     plugins: {

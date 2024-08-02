@@ -3,8 +3,8 @@ import React from "react";
 
 const Other = () => {
   return (
-    <div className=" w-full flex gap-4 xl:gap-6 py-4">
-      <div className=" w-1/2 rounded-xl xxl:rounded-2xl 2xl:rounded-3xl bg-white p-4 xl:p-6">
+    <div className=" w-full flex flex-col sm:flex-row gap-4 xl:gap-6 py-4">
+      <div className=" w-full sm:w-1/2 rounded-xl xxl:rounded-2xl 2xl:rounded-3xl bg-white p-4 xl:p-6">
         <p className=" font-bold text-xl xl:text-2xl">Latest Documents</p>
         <div className=" flex justify-between py-2 border-b-[0.5px]">
           <div className=" flex gap-2">
@@ -90,7 +90,7 @@ const Other = () => {
           </div>
         </div>
       </div>
-      <div className=" w-1/2 rounded-xl xxl:rounded-2xl 2xl:rounded-3xl bg-white p-4 xl:p-6">
+      <div className=" w-full sm:w-1/2 rounded-xl xxl:rounded-2xl 2xl:rounded-3xl bg-white p-4 xl:p-6">
         <div className=" flex flex-col gap-4">
           <p className=" font-bold text-xl xl:text-2xl">Announcements</p>
           <p>Soon you will see latest announcements/new in this section.</p>

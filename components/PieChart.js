@@ -46,42 +46,39 @@ const ShippingDetails = () => {
 
 const Dought = ({ data, options }) => {
   return (
-    <div className=" flex justify-between">
+    <div className=" flex flex-col sm:flex-row justify-between">
       <div
-        style={{ width: "15%", height: "15%" }}
-        className=" flex flex-col gap-5"
+        // style={{ width: "15%", height: "15%" }}
+        className=" flex flex-col gap-5 w-[65%] sm:w-[15%] h-[65%] sm:h-[15%] "
       >
         <Doughnut data={data} options={options}></Doughnut>
         <p>Origin Port</p>
         <ShippingDetails />
       </div>
       <div
-        style={{ width: "15%", height: "15%" }}
-        className=" flex flex-col gap-5"
+        // style={{ width: "15%", height: "15%" }}
+        className=" flex flex-col gap-5 w-[65%] sm:w-[15%] h-[65%] sm:h-[15%] "
       >
         <Doughnut data={data} options={options}></Doughnut>
         <p>Destination Port</p>
         <ShippingDetails />
       </div>
       <div
-        style={{ width: "15%", height: "15%" }}
-        className=" flex flex-col gap-5"
+         className=" flex flex-col gap-5 w-[65%] sm:w-[15%] h-[65%] sm:h-[15%] "
       >
         <Doughnut data={data} options={options}></Doughnut>
         <p>Career Port</p>
         <ShippingDetails />
       </div>
       <div
-        style={{ width: "15%", height: "15%" }}
-        className=" flex flex-col gap-5"
+         className=" flex flex-col gap-5 w-[65%] sm:w-[15%] h-[65%] sm:h-[15%] "
       >
         <Doughnut data={data} options={options}></Doughnut>
         <p>Consignee or Shipper</p>
         <ShippingDetails />
       </div>
       <div
-        style={{ width: "15%", height: "15%" }}
-        className=" flex flex-col gap-5"
+         className=" flex flex-col gap-5 w-[65%] sm:w-[15%] h-[65%] sm:h-[15%] "
       >
         <Doughnut data={data} options={options}></Doughnut>
         <p>Milestones</p>

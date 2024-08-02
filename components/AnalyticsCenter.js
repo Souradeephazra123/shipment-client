@@ -91,6 +91,109 @@ const AnalyticsCenter = () => {
   ];
 
   // piechart
+  const MileStoneArr = [
+    "BOOKED",
+    "DISCHARGED",
+    "ARRIVED",
+    "DELIVERED",
+    "RETURNED",
+  ];
+  const data1 = {
+    labels: MileStoneArr,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [463 - 19, 463 - 29, 463 - 22, 463 - 393, 463 - 149],
+        backgroundColor: [
+          "#6B120A",
+          "#EB5D50",
+          "#F7A668",
+          "#7BB896",
+          "#1073E6",
+        ],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
+  const data2 = {
+    labels: MileStoneArr,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [50, 120, 90, 80, 123],
+        backgroundColor: [
+          "#6B120A",
+          "#EB5D50",
+          "#F7A668",
+          "#7BB896",
+          "#1073E6",
+        ],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
+
+  const data3 = {
+    labels: MileStoneArr,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [60, 110, 95, 85, 113],
+        backgroundColor: [
+          "#6B120A",
+          "#EB5D50",
+          "#F7A668",
+          "#7BB896",
+          "#1073E6",
+        ],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
+
+  const Mile = ["ON TIME", "LATE"];
+
+  const r2data1 = {
+    labels: Mile,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [681, 1],
+        backgroundColor: ["#7BB896", "#F7A668"],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
+
+  const r2data2 = {
+    labels: Mile,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [452,682-452],
+        backgroundColor: ["#7BB896", "#F7A668"],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
+
+  const r2data3 = {
+    labels: Mile,
+    datasets: [
+      {
+        label: "Sea Dataset",
+        data: [234,682-234],
+        backgroundColor: ["#7BB896", "#F7A668"],
+        borderWidth: 0,
+        // hoverOffset: 4,
+      },
+    ],
+  };
 
   return (
     <div className=" flex flex-col gap-5">
@@ -124,68 +227,9 @@ const AnalyticsCenter = () => {
         </div>
       </div>
 
-      {/* Pie chart */}
-      <div className=" w-full flex gap-3 ">
-        <div className=" w-1/2 p-3 bg-white rounded-xl xl:rounded-2xl flex flex-col gap-5">
-          <div className=" flex justify-between">
-            <p className=" text-lg xl:text-xl font-semibold">Milestones</p>
-            <p className=" text-sm font-medium text-[#969596] border-[1px] border-[#D9D9D9] py-1 xl:py-2 px-4 xl:px-6 rounded-md xl:rounded-xl">
-              In-transit(463)
-            </p>
-          </div>
-          <div className=" flex gap-4 items-center justify-center">
-            <RealPie />
-            <div className=" flex flex-col gap-2">
-              {MileStoneChar.map((item, idx) => (
-                <div key={idx} className=" flex  gap-2 items-center">
-                  <div
-                    className={` no-content  w-2 h-2 rounded-full ${
-                      item.name === "BOOKED"
-                        ? "bg-[#6B120A]"
-                        : item.name === "DISCHARGED"
-                        ? "bg-[#EB5D50]"
-                        : item.name === "ARRIVED"
-                        ? "bg-[#F7A668]"
-                        : item.name === "DELIVERED"
-                        ? " bg-[#7BB896]"
-                        : item.name === "RETURNED"
-                        ? " bg-[#1073E6]"
-                        : ""
-                    } `}
-                  ></div>
-                  <p className=" text-xs">{item.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className=" w-1/2 p-3 bg-white rounded-xl xl:rounded-2xl">
-          <p className="text-lg xl:text-xl font-semibold">Timelines</p>
-          <div className=" flex gap-4 items-center justify-center">
-            <RealPie2 />
-            <div className=" flex flex-col gap-2">
-              {MileChar.map((item, idx) => (
-                <div key={idx} className=" flex  gap-2 items-center">
-                  <div
-                    className={` no-content  w-2 h-2 rounded-full ${
-                      item.name === "LATE"
-                        ? "bg-[#F7A668]"
-                        : item.name === "ON TIME"
-                        ? " bg-[#7BB896]"
-                        : ""
-                    } `}
-                  ></div>
-                  <p className=" text-xs">{item.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className=" p-3 shadow-md flex items-center gap-6 w-full">
+      <div className=" p-3 shadow-md flex flex-col lg:flex-row items-center gap-6 w-full bg-white rounded-lg">
         {/* type */}
-        <div className=" flex gap-3 items-center">
+        <div className=" flex gap-3 items-center bg-white ">
           <p className=" text-sm font-semibold">Type</p>
           <div className=" relative">
             <div className=" border-[1px] border-[#D9D9D9] rounded-full py-2 px-6 relative w-52">
@@ -319,8 +363,15 @@ const AnalyticsCenter = () => {
           </div>
         </div>
 
-        <div className=" flex gap-2">
-          <button className=" border-[1px] border-[#6B120A] bg-white text-[#6B120A] text-sm font-semibold rounded-full py-2 xl:py-4 px-3 xl:px-6">
+        <div className=" flex gap-4 md:gap-2">
+          <button
+            onClick={() => {
+              setPeriod("Select (day)");
+              setType("select");
+              setDate("Select date");
+            }}
+            className=" border-[1px] border-[#6B120A] bg-white text-[#6B120A] text-sm font-semibold rounded-full py-2 xl:py-4 px-3 xl:px-6"
+          >
             cancel
           </button>
           <button className=" border-[1px] border-[#6B120A] text-white bg-[#6B120A] text-sm font-semibold rounded-full py-2 xl:py-4 px-3 xl:px-6">
@@ -328,26 +379,90 @@ const AnalyticsCenter = () => {
           </button>
         </div>
       </div>
+
+      {/* Pie chart */}
+      <div className=" w-full flex flex-col md:flex-row gap-3  ">
+        <div className=" w-full md:w-1/2 p-3 bg-white rounded-xl xl:rounded-2xl flex flex-col gap-5">
+          <div className=" flex justify-between">
+            <p className=" text-lg xl:text-xl font-semibold">Milestones</p>
+            <p className=" text-sm font-medium text-[#969596] border-[1px] border-[#D9D9D9] py-1 xl:py-2 px-4 xl:px-6 rounded-md xl:rounded-xl">
+              In-transit(463)
+            </p>
+          </div>
+          <div className=" flex gap-4 items-center justify-center">
+            {activeYan === "Sea" && <RealPie data={data1} />}
+            {activeYan === "Air" && <RealPie data={data2} />}
+            {activeYan === "Land" && <RealPie data={data3} />}
+            <div className=" flex flex-col gap-2">
+              {MileStoneChar.map((item, idx) => (
+                <div key={idx} className=" flex  gap-2 items-center">
+                  <div
+                    className={` no-content  w-2 h-2 rounded-full ${
+                      item.name === "BOOKED"
+                        ? "bg-[#6B120A]"
+                        : item.name === "DISCHARGED"
+                        ? "bg-[#EB5D50]"
+                        : item.name === "ARRIVED"
+                        ? "bg-[#F7A668]"
+                        : item.name === "DELIVERED"
+                        ? " bg-[#7BB896]"
+                        : item.name === "RETURNED"
+                        ? " bg-[#1073E6]"
+                        : ""
+                    } `}
+                  ></div>
+                  <p className=" text-xs">{item.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className=" w-full md:w-1/2 p-3 bg-white rounded-xl xl:rounded-2xl">
+          <p className="text-lg xl:text-xl font-semibold">Timelines</p>
+          <div className=" flex gap-4 items-center justify-center">
+            {activeYan === "Sea" && <RealPie2 data={r2data1} />}
+            {activeYan === "Air" && <RealPie2 data={r2data2} />}
+            {activeYan === "Land" && <RealPie2 data={r2data3} />}
+            <div className=" flex flex-col gap-2">
+              {MileChar.map((item, idx) => (
+                <div key={idx} className=" flex  gap-2 items-center">
+                  <div
+                    className={` no-content  w-2 h-2 rounded-full ${
+                      item.name === "LATE"
+                        ? "bg-[#F7A668]"
+                        : item.name === "ON TIME"
+                        ? " bg-[#7BB896]"
+                        : ""
+                    } `}
+                  ></div>
+                  <p className=" text-xs">{item.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* boxes */}
-      <div className=" w-full flex gap-3">
-        <div className=" w-1/3">
+      <div className=" w-full flex flex-col md:flex-row gap-3">
+        <div className="w-full md:w-1/3">
           <Box data={DataArr} heading={"Loading"} />
         </div>
-        <div className=" w-1/3">
+        <div className=" w-full md:w-1/3">
           <Box data={DataArr} heading={"Discharge"} />
         </div>
-        <div className=" w-1/3">
+        <div className=" w-full md:w-1/3">
           <Box data={DataArr} heading={"Delivery"} />
         </div>
       </div>
-      <div className=" w-full flex gap-3">
-        <div className=" w-1/3">
+      <div className=" w-full flex flex-col md:flex-row gap-3">
+        <div className=" w-full md:w-1/3">
           <Box data={DataArr} heading={"Shipping"} />
         </div>
-        <div className=" w-1/3">
+        <div className=" w-full md:w-1/3">
           <Box data={DataArr} heading={"Consignee"} />
         </div>
-        <div className=" w-1/3">
+        <div className=" w-full md:w-1/3">
           <Box data={DataArr} heading={"Carrier"} />
         </div>
       </div>

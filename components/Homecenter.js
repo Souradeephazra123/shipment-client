@@ -11,7 +11,7 @@ const Homecenter = () => {
 
   return (
     <div className=" flex flex-col gap-3 py-2">
-      <div className=" flex justify-between">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 ">
         {arr.map((item, idx) => (
           <div
             key={idx}
